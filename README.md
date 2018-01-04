@@ -13,6 +13,8 @@ _These persistent jail mounts are technically optional as the installation or OS
 ### Let's Encrypt Pre-requisites
 Let's Encrypt has a little bit of manual setup. This has only been tested as a DNS-01 challenge with CloudFlare. However, once this is setup, with the persistant storage, you'll never really have to do this again.
 
+The script defaults to generating a valid LE-issued SSL certificate with Dehydrated<sup>[1](#dehydrated)</sup>. If you don't want to use this, remove references to dehydrated from the _unifi-jail.sh_ script and UniFi will use a self-signed certificate. Steps below are listed with OPT for Optional as they are related to the Dehydrated client setup.
+
 * CloudFlare Account (Basic/Free works) and Global API Key
 * One public domain setup in CloudFlare
 * FQDN created on your internal DNS that will resolve to your UniFi Controller's IP; the FQDN must use the same domain name, but does not need a record created in CloudFlare, only on the internal DNS.
@@ -20,11 +22,10 @@ Let's Encrypt has a little bit of manual setup. This has only been tested as a D
 
 ### Steps For Use
 1. Update _JAIL_PATH_, _JAIL_IP_, and _DEFAULT_GW_IP_ inside of _unifi-jail.sh_.  Change _JAIL_NAME_ if you want to.
-1. Put the files within the repo's _bin_ directory into the _unifi/dehydrated_ directory before you run the main jail script.
-   Note: The script defaults to generating a valid SSL certificate with Dehydrated<sup>[1](#dehydrated)</sup>. If you don't want to use this, remove references to dehydrated from the _unifi-jail.sh_ script and UniFi will use a self-signed certificate.
-1. Place your UniFi Controller's fully qualified domain name (FQDN, i.e. unifi.example.com) into _unifi/dehydrated/domains.txt_.
-1. Update _FQDN_ variable in _unifi/dehydrated/deploy.sh_.
-1. Create _unifi/dehydrated/config_ using the bare config below.
+1. (OPT) Put the files within the repo's _bin_ directory into the _unifi/dehydrated_ directory before you run the main jail script.
+1. (OPT) Place your UniFi Controller's fully qualified domain name (FQDN, i.e. unifi.example.com) into _unifi/dehydrated/domains.txt_.
+1. (OPT) Update _FQDN_ variable in _unifi/dehydrated/deploy.sh_.
+1. (OPT) Create _unifi/dehydrated/config_ using the bare config below.
 1. Put _unifi-jail.sh_ somewhere accessible on your FreeNAS system and run it.
 1. Management page will be available at https://[FQDN]:8443/.
 

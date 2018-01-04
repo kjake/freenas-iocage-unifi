@@ -21,7 +21,7 @@ iocage exec ${JAIL_NAME} sh /etc/dehydrated/install.sh
 iocage exec ${JAIL_NAME} chown -R unifi /usr/local/share/java/unifi
 iocage exec ${JAIL_NAME} sysrc -f /etc/rc.conf ${JAIL_NAME}_enable="YES"
 iocage exec ${JAIL_NAME} sysrc -f /etc/rc.conf mongod_enable="NO"
-iocage exec ${JAIL_NAME} sysrc -f /etc/rc.conf weekly_dehydrated_enable="YES"
-iocage exec ${JAIL_NAME} sysrc -f /etc/rc.conf weekly_dehydrated_deployscript="/etc/dehydrated/deploy.sh"
+iocage exec ${JAIL_NAME} sysrc -f /etc/periodic.conf weekly_dehydrated_enable="YES"
+iocage exec ${JAIL_NAME} sysrc -f /etc/periodic.conf weekly_dehydrated_deployscript="/etc/dehydrated/deploy.sh""
 iocage restart ${JAIL_NAME}
 iocage exec ${JAIL_NAME} sh /etc/dehydrated/deploy.sh

@@ -40,6 +40,17 @@ export CF_EMAIL='user@example.com'
 export CF_KEY='KEUMY69kDTErhFHZXSrvMS'
 ```
 
+### Common Tasks
+- Disable Let's Encrypt Renewal:
+  - Run `iocage exec unifi sysrc -f /etc/rc.conf weekly_dehydrated_enable="NO"`
+- Restart UniFi Controller:
+  - Run `iocage exec unifi service unifi restart`
+- Restart entire jail:
+  - Run `iocage restart unifi`
+- Manually Renew Let's Encrypt Certificate:
+  - Run `iocage exec unifi sh /etc/dehydrated/deploy.sh`
+
+
 ##### Footnotes
 ###### <a name="dehydrated">1</a>: https://b3n.org/intranet-ssl-certificates-using-lets-encrypt-dns-01/
 

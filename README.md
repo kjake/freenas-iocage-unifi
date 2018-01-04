@@ -42,7 +42,7 @@ export CF_KEY='KEUMY69kDTErhFHZXSrvMS'
 
 ### Common Tasks
 - Disable Let's Encrypt Auto-renew:
-  - Run `iocage exec unifi sysrc -f /etc/rc.conf weekly_dehydrated_enable="NO"`
+  - Run `iocage exec unifi sysrc -f /etc/periodic.conf weekly_dehydrated_enable="NO"`
 - Restart UniFi Controller:
   - Run `iocage exec unifi service unifi restart`
 - Restart entire jail:

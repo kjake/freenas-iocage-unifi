@@ -25,7 +25,7 @@ The script defaults to generating a valid LE-issued SSL certificate with Dehydra
 1. (OPT) Put the files within the repo's _bin_ directory into the _unifi/dehydrated_ directory before you run the main jail script.
 1. (OPT) Place your UniFi Controller's fully qualified domain name (FQDN, i.e. unifi.example.com) into _unifi/dehydrated/domains.txt_.
 1. (OPT) Update _FQDN_ variable in _unifi/dehydrated/deploy.sh_.
-1. (OPT) Create _unifi/dehydrated/config_ using the bare config below.
+1. (OPT) Create _unifi/dehydrated/config_ using the bare config below, updating _CF_EMAIL_ and _CF_KEY_ with your CloudFlare info.
 1. Put _unifi-jail.sh_ somewhere accessible on your FreeNAS system and run it.
 1. Management page will be available at https://[FQDN]:8443/.
 

@@ -9,6 +9,12 @@ iocage destroy -f ${JAIL_NAME}
 echo '{"pkgs":["openjdk8","python","mongodb","bash","snappyjava","gmake","gettext","indexinfo","zip","git","dehydrated","py27-pip"]}' > /tmp/pkg.json
 iocage create --name "${JAIL_NAME}" -p /tmp/pkg.json -r 11.1-RELEASE ip4_addr="vnet0|${JAIL_IP}/24" vnet="on" allow_raw_sockets="1" defaultrouter="${DEFAULT_GW_IP}" boot="on" host_hostname="${JAIL_NAME}" mount_linprocfs="1"
 rm /tmp/pkg.json
+
+mkdir -p ${JAIL_PATH}/portsnap/ports
+mkdir -p ${JAIL_PATH}/portsnap/db
+mkdir -p ${JAIL_PATH}/${JAIL_NAME}/dehydrated
+mkdir -p ${JAIL_PATH}/${JAIL_NAME}/data
+mkdir -p ${JAIL_PATH}/${JAIL_NAME}/logs
 iocage fstab -a ${JAIL_NAME} linproc /proc linprocfs rw 0 0
 iocage fstab -a ${JAIL_NAME} ${JAIL_PATH}/portsnap/ports /usr/ports nullfs rw 0 0
 iocage fstab -a ${JAIL_NAME} ${JAIL_PATH}/portsnap/db /var/db/portsnap nullfs rw 0 0

@@ -25,6 +25,8 @@ iocage exec ${JAIL_NAME} "if [ -z /usr/ports ]; then portsnap fetch extract; els
 iocage exec ${JAIL_NAME} make -C /usr/ports/net-mgmt/unifi5 clean install BATCH=yes
 iocage exec ${JAIL_NAME} sh /etc/dehydrated/install.sh
 iocage exec ${JAIL_NAME} chown -R unifi /usr/local/share/java/unifi
+# should be able to remove this after the next FN release (currently needed for 11.1-U2 systems)
+iocage exec ${JAIL_NAME} sysrc -f /etc/rc.conf ifconfig_epair0_name="epair0b"
 iocage exec ${JAIL_NAME} sysrc -f /etc/rc.conf ${JAIL_NAME}_enable="YES"
 iocage exec ${JAIL_NAME} sysrc -f /etc/rc.conf mongod_enable="NO"
 iocage exec ${JAIL_NAME} sysrc -f /etc/periodic.conf weekly_dehydrated_enable="YES"

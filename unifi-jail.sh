@@ -6,7 +6,7 @@ DEFAULT_GW_IP=xxx.xxx.xxx.xxx
 
 iocage stop ${JAIL_NAME}
 iocage destroy -f ${JAIL_NAME}
-echo '{"pkgs":["openjdk8","python","mongodb","bash","snappyjava","gmake","gettext","indexinfo","zip","git","dehydrated","py27-pip"]}' > /tmp/pkg.json
+echo '{"pkgs":["openjdk8","python","mongodb34","bash","snappyjava","gmake","gettext","indexinfo","zip","git","dehydrated","py27-pip"]}' > /tmp/pkg.json
 iocage create --name "${JAIL_NAME}" -p /tmp/pkg.json -r 11.1-RELEASE ip4_addr="vnet0|${JAIL_IP}/24" vnet="on" allow_raw_sockets="1" defaultrouter="${DEFAULT_GW_IP}" boot="on" host_hostname="${JAIL_NAME}" mount_linprocfs="1"
 rm /tmp/pkg.json
 

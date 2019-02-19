@@ -1,5 +1,7 @@
 # UniFi Controller Jail for FreeNAS
 
+## I no longer use FreeNAS and will not be maintaining this
+
 Currently installs UniFi 5.6.26 with Let's Encrypt auto-renew support!
 
 This Jail makes use of VNET emulated/virtual network interfaces rather than sharing your main interface; this is needed for proper network discovery, but may not be required as this Jail is tested more.
